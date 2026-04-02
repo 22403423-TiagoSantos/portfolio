@@ -57,6 +57,8 @@ class Competencia(models.Model):
     nivel_dominio = models.IntegerField()
     descricao = models.TextField(blank=True, null=True)
 
+    perfil = models.ForeignKey(Perfil, on_delete=models.CASCADE, related_name='competencias', default=1)
+
     def __str__(self):
         return self.nome
     
