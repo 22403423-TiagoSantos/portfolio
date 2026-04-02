@@ -90,13 +90,16 @@ class Formacao(models.Model):
         return self.nome
     
 class TFC(models.Model):
-    nome = models.CharField(max_length=200)
+    nome = models.CharField(max_length=200) 
     autor = models.CharField(max_length=100)
     sumario = models.TextField()
     orientador = models.CharField(max_length=100) 
     classificacao = models.IntegerField()
-    
     licenciatura = models.ForeignKey(Licenciatura, on_delete=models.CASCADE, related_name='tfcs')
+    ano = models.IntegerField(default=2025)
+    link_pdf = models.URLField(blank=True, null=True)
+    link_imagem = models.URLField(blank=True, null=True)
+    palavras_chave = models.CharField(max_length=200, blank=True, null=True)
 
     def __str__(self):
         return self.nome
