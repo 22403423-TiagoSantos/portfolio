@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Perfil, Licenciatura
+from .models import Perfil, Licenciatura, Docente
 
 class PerfilAdmin(admin.ModelAdmin):
     list_display = ('nome', 'titulo_profissional', 'link_linkedin')
@@ -14,3 +14,9 @@ class LicenciaturaAdmin(admin.ModelAdmin):
     search_fields = ('nome',)
 
 admin.site.register(Licenciatura, LicenciaturaAdmin)
+
+class DocenteAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'link_pagina_pessoal')
+    search_fields = ('nome',)
+
+admin.site.register(Docente, DocenteAdmin)
