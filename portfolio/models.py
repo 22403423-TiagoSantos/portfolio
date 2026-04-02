@@ -96,3 +96,12 @@ class TFC(models.Model):
 
     def __str__(self):
         return self.nome
+    
+class MakingOf(models.Model):
+    nome = models.CharField(max_length=100)
+    descricao_processo = models.TextField()
+    erros_resolucoes = models.TextField()
+    imagem = models.ImageField(upload_to='making_of/', blank=True, null=True)
+
+    def __str__(self):
+        return self.nome
