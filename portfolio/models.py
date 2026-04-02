@@ -28,3 +28,15 @@ class Docente(models.Model):
 
     def __str__(self):
         return self.nome
+    
+class UnidadeCurricular(models.Model):
+    nome = models.CharField(max_length=200)
+    ects = models.IntegerField()
+    imagem = models.ImageField(upload_to='ucs/', blank=True, null=True)
+    ano_semestre = models.CharField(max_length=50)
+    
+    docentes = models.ManyToManyField(Docente, related_name='ucs')
+    licenciaturas = models.ManyToManyField(Licenciatura, related_name='ucs')
+
+    def __str__(self):
+        return self.nome
