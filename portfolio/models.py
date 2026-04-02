@@ -12,7 +12,7 @@ class Perfil(models.Model):
         return self.nome
     
 class Licenciatura(models.Model):
-    perfil = models.OneToOneField(Perfil, on_delete=models.CASCADE, related_name='licenciatura')
+    perfil = models.OneToOneField(Perfil, on_delete=models.CASCADE, related_name='licenciatura', null=True, blank=True)
     
     nome = models.CharField(max_length=200)
     ects_totais = models.IntegerField()
