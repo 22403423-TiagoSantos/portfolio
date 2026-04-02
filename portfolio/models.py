@@ -74,3 +74,13 @@ class Projeto(models.Model):
 
     def __str__(self):
         return self.nome
+    
+class Formacao(models.Model):
+    nome = models.CharField(max_length=200)
+    instituicao = models.CharField(max_length=100)
+    data_conclusao = models.DateField(blank=True, null=True)
+    logotipo = models.ImageField(upload_to='formacoes/', blank=True, null=True)
+    link_certificado = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return self.nome
