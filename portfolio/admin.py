@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Perfil, Licenciatura, Docente, UnidadeCurricular
+from .models import Perfil, Licenciatura, Docente, UnidadeCurricular, Tecnologia
 
 class PerfilAdmin(admin.ModelAdmin):
     list_display = ('nome', 'titulo_profissional', 'link_linkedin')
@@ -25,5 +25,12 @@ class UnidadeCurricularAdmin(admin.ModelAdmin):
     list_display = ('nome', 'ects', 'ano_semestre')
     search_fields = ('nome',)
     list_filter = ('ano_semestre',)
-    
+
 admin.site.register(UnidadeCurricular, UnidadeCurricularAdmin)
+
+class TecnologiaAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'nivel_interesse')
+    search_fields = ('nome',)
+    list_filter = ('nivel_interesse',)
+
+admin.site.register(Tecnologia, TecnologiaAdmin)
