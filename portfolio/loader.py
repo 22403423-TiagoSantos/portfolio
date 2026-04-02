@@ -7,12 +7,14 @@ with open('data/tfcs_deisi.json') as f:
     tfcs = json.load(f)
 
     for item in tfcs:
+
         partes = item['licenciatura'].split('.')
-        nome_completo = partes[0].strip()
         
-        nome_curto = nome_completo.replace("Licenciatura em ", "")
+        nome_lic = partes[0].strip().replace("Licenciatura em ", "")
         
-        ano_json = int(partes[1].strip())
+        ano_json = int(partes[-1].strip())
+
+        licenciatura_obj = Licenciatura.objects.get(nome=nome_lic)
 
         TFC.objects.create(
             nome = item['titulo'],
@@ -20,7 +22,7 @@ with open('data/tfcs_deisi.json') as f:
             orientador = item['orientadores'],
             sumario = item['resumo'],
             classificacao = item['rating'],
-            licenciatura = Licenciatura.objects.get(nome = nome_curto),
+            licenciatura = licenciatura_obj,
             ano = ano_json,
             link_pdf = item['link_pdf'],
             link_imagem = item['link_imagem'],
