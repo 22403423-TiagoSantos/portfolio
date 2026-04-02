@@ -64,7 +64,7 @@ class TFCAdmin(admin.ModelAdmin):
 admin.site.register(TFC, TFCAdmin)
 
 class MakingOfAdmin(admin.ModelAdmin):
-    list_display = ('nome',)
+    list_display = ('nome', 'perfil')
     search_fields = ('nome', 'descricao_processo')
 
 admin.site.register(MakingOf, MakingOfAdmin)
