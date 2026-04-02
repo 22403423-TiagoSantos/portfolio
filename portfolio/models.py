@@ -107,5 +107,7 @@ class MakingOf(models.Model):
     erros_resolucoes = models.TextField()
     imagem = models.ImageField(upload_to='making_of/', blank=True, null=True)
 
+    perfil = models.ForeignKey(Perfil, on_delete=models.CASCADE, related_name='making_ofs', default=1)
+
     def __str__(self):
         return self.nome
