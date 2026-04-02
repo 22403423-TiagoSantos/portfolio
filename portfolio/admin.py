@@ -50,7 +50,7 @@ class ProjetoAdmin(admin.ModelAdmin):
 admin.site.register(Projeto, ProjetoAdmin)
 
 class FormacaoAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'instituicao', 'data_conclusao')
+    list_display = ('nome', 'instituicao', 'data_conclusao', 'perfil')
     search_fields = ('nome', 'instituicao')
     list_filter = ('instituicao',)
 
