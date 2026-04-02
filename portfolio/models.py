@@ -50,3 +50,12 @@ class Tecnologia(models.Model):
 
     def __str__(self):
         return self.nome
+    
+class Competencia(models.Model):
+    nome = models.CharField(max_length=100)
+    categoria = models.CharField(max_length=100)
+    nivel_dominio = models.IntegerField()
+    descricao = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.nome

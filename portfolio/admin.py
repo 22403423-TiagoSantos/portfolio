@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import Perfil, Licenciatura, Docente, UnidadeCurricular, Tecnologia
-
+from .models import Perfil, Licenciatura, Docente, UnidadeCurricular, Tecnologia, Competencia
 class PerfilAdmin(admin.ModelAdmin):
     list_display = ('nome', 'titulo_profissional', 'link_linkedin')
     search_fields = ('nome', 'titulo_profissional')
@@ -34,3 +33,10 @@ class TecnologiaAdmin(admin.ModelAdmin):
     list_filter = ('nivel_interesse',)
 
 admin.site.register(Tecnologia, TecnologiaAdmin)
+
+class CompetenciaAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'categoria', 'nivel_dominio')
+    search_fields = ('nome', 'categoria')
+    list_filter = ('categoria', 'nivel_dominio')
+
+admin.site.register(Competencia, CompetenciaAdmin)
