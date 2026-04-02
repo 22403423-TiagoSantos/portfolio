@@ -36,7 +36,7 @@ class TecnologiaAdmin(admin.ModelAdmin):
 admin.site.register(Tecnologia, TecnologiaAdmin)
 
 class CompetenciaAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'categoria', 'nivel_dominio')
+    list_display = ('nome', 'categoria', 'nivel_dominio', 'perfil')
     search_fields = ('nome', 'categoria')
     list_filter = ('categoria', 'nivel_dominio')
 
