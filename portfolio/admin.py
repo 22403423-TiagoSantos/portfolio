@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Perfil, Licenciatura, Docente, UnidadeCurricular, Tecnologia, Competencia, Projeto, Formacao, TFC
+from .models import Perfil, Licenciatura, Docente, UnidadeCurricular, Tecnologia, Competencia, Projeto, Formacao, TFC, MakingOf
+
 class PerfilAdmin(admin.ModelAdmin):
     list_display = ('nome', 'titulo_profissional', 'link_linkedin')
     search_fields = ('nome', 'titulo_profissional')
@@ -61,3 +62,9 @@ class TFCAdmin(admin.ModelAdmin):
     search_fields = ('nome', 'autor')
 
 admin.site.register(TFC, TFCAdmin)
+
+class MakingOfAdmin(admin.ModelAdmin):
+    list_display = ('nome',)
+    search_fields = ('nome', 'descricao_processo')
+
+admin.site.register(MakingOf, MakingOfAdmin)
