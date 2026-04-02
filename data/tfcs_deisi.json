@@ -7441,8 +7441,8 @@
         "email": "deisi@ulusofona.pt",
         "link_pdf": "https://teses.deisi.ulusofona.pt/media/teses/Tecnologia_sem_fios.doc",
         "link_imagem": "https://teses.deisi.ulusofona.pt/media/teses/redes_61m9q0a.jpg",
-        "resumo": "Resumo: O crescente desenvolvimento das tecnologias de telecomunicações e da informática, unido à necessidade do homem de estar cada vez mais informado esteja onde estiver, tem colocado em evidência a tecnologia Wireless (sem fios). A Wireless é um sistema de transmissão de dados que pode ser utilizada como alternativa para as redes construídas à base de cablagens. Muitas são desde já as funcionalidades onde esta tecnologia é aplicada, mas ao ritmo da inovação nesta área, é inimaginável até onde a mesma poderá evoluir.",
-        "palavras_chave": "Palavras chave: Bluetooth LE; Redes sem fio.",
+        "resumo": "Resumo: O crescente desenvolvimento das tecnologias de  e da informática, unido à necessidade do homem de estar cada vez mais informado esteja onde estiver, tem colocado em evidência a tecnologia Wireless (sem fios). A Wireless é um sistema de transmissão de dados que pode ser utilizada como alternativa para as redes construídas à base de cablagens. Muitas são desde já as funcionalidades onde esta tecnologia é aplicada, mas ao ritmo da inovação nesta área, é inimaginável até onde a mesma poderá evoluir.",
+        "palavras_chave"telecomunicações: "Palavras chave: Bluetooth LE; Redes sem fio.",
         "areas": "Áreas: Telecommunications; Wireless communication.",
         "tecnologias": "Tecnologias usadas: Bluetooth.",
         "rating": 5
