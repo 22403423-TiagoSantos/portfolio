@@ -57,9 +57,9 @@ class FormacaoAdmin(admin.ModelAdmin):
 admin.site.register(Formacao, FormacaoAdmin)
 
 class TFCAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'autor', 'classificacao', 'licenciatura')
-    list_filter = ('licenciatura', 'orientador')
-    search_fields = ('nome', 'autor')
+    list_display = ('nome', 'autor', 'ano', 'classificacao', 'licenciatura')
+    list_filter = ('licenciatura', 'ano', 'classificacao')
+    search_fields = ('nome', 'autor', 'palavras_chave')
 
 admin.site.register(TFC, TFCAdmin)
 
