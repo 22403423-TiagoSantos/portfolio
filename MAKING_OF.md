@@ -14,9 +14,9 @@
 * **Erro de Migração (Campos Non-Nullable):** Ao adicionar os campos extra no modelo já existente, o Django exigiu um valor por defeito (`default`). Resolvi o problema abortando a migração inicial, ajustando o `models.py` para permitir campos nulos e vazios, e voltando a correr `makemigrations` com sucesso.
 
 ### Evidências de Planeamento (Caderno)
-![Diagrama de Entidade-Relacionamento](/media/makingof/der.jpg)
-![Atributos](/media/makingof/atributos.jpg)
-![Observações](/media/makingof/observações.jpg)
+![Diagrama de Entidade-Relacionamento](/media/makingof/der.jpeg)
+![Atributos](/media/makingof/atributos.jpeg)
+![Observações](/media/makingof/observações.jpeg)
 
 ---
 
@@ -31,8 +31,8 @@
 * **ManyToMany com Tecnologias:** Como um projeto utiliza várias ferramentas (ex: Python e SQLite) e uma tecnologia pode estar em vários projetos, esta relação foi a escolha lógica para flexibilidade da base de dados.
 
 ### Evidências de Planeamento
-![Atributos do Projeto](/media/makingof/atributos.jpg)
-![Relações de Projetos](/media/makingof/relações.jpg)
+![Atributos do Projeto](/media/makingof/atributos.jpeg)
+![Relações de Projetos](/media/makingof/relações.jpeg)
 
 ---
 
@@ -46,7 +46,7 @@
 * **Ponto de Ligação Central:** O Perfil serve como a entidade "mestre", à qual a maioria das outras entidades (Competência, Formação, MakingOf) se liga por `ForeignKey`, garantindo que toda a informação do site pertence ao mesmo utilizador.
 
 ### Evidências de Planeamento
-![Esquema do Perfil](/media/makingof/atributos.jpg)
+![Esquema do Perfil](/media/makingof/atributos.jpeg)
 
 ---
 
@@ -60,7 +60,7 @@
 * **ForeignKey com Licenciatura:** Cada TFC está estritamente ligado a um curso específico, garantindo a integridade dos dados académicos.
 
 ### Evidências de Planeamento
-![Observações TFC](/media/makingof/observações.jpg)
+![Observações TFC](/media/makingof/observações.jpeg)
 
 ---
 
@@ -74,7 +74,7 @@
 * **Relação com Projetos:** Ambas as entidades ligam-se a `Projeto` por Many-to-Many, permitindo filtrar quais projetos comprovam cada competência ou uso de tecnologia.
 
 ### Evidências de Planeamento
-![Atributos Tecnologias](/media/makingof/atributos.jpg)
+![Atributos Tecnologias](/media/makingof/atributos.jpeg)
 
 ---
 
@@ -88,7 +88,7 @@
 * **Ligação ao Perfil:** Relacionado com `Perfil` para identificar o autor da documentação, mantendo a estrutura lógica de todo o sistema.
 
 ### Evidências de Planeamento
-![Planeamento do Making Of](/media/makingof/atributos%20(continuação).jpg)
+![Planeamento do Making Of](/media/makingof/atributos%20(continuação).jpeg)
 
 ---
 
