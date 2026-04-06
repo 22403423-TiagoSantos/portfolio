@@ -76,6 +76,9 @@ class Projeto(models.Model):
     conceitos_aplicados = models.TextField()
     imagem = models.ImageField(upload_to='projetos/')
     link_github = models.URLField(blank=True, null=True)
+
+    link_video = models.URLField(blank=True, null=True)
+    ano_realizacao = models.IntegerField(default=2024)
     
     tecnologias = models.ManyToManyField(Tecnologia, related_name='projetos')
     competencias = models.ManyToManyField(Competencia, related_name='projetos')
