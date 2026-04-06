@@ -22,9 +22,9 @@ class DocenteAdmin(admin.ModelAdmin):
 admin.site.register(Docente, DocenteAdmin)
 
 class UnidadeCurricularAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'ects', 'ano_semestre')
+    list_display = ('nome', 'codigo', 'ano', 'semestre', 'ects')
     search_fields = ('nome',)
-    list_filter = ('ano_semestre',)
+    list_filter = ('ano', 'semestre', 'licenciaturas')
 
 admin.site.register(UnidadeCurricular, UnidadeCurricularAdmin)
 
