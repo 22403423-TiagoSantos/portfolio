@@ -1,0 +1,25 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+    <h1>As Minhas Competências</h1>
+
+    {% if competencias %}
+        <ul>
+            {% for comp in competencias %}
+                <li style="margin-bottom: 20px;">
+                    <h2>{{ comp.nome }}</h2>
+                    <p><strong>Categoria:</strong> {{ comp.categoria }}</p>
+                    
+                    <p><strong>Nível de Domínio:</strong> {{ comp.nivel_dominio }} / 5</p>
+
+                    {% if comp.descricao %}
+                        <p>{{ comp.descricao }}</p>
+                    {% endif %}
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Ainda não registaste competências no Admin.</p>
+    {% endif %}
+{% endblock %}

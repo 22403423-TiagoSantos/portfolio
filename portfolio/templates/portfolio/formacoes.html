@@ -1,0 +1,30 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+    <h1>Formação e Certificações</h1>
+
+    {% if formacoes %}
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+            {% for f in formacoes %}
+                <div style="border: 1px solid #ddd; padding: 15px; border-radius: 8px;">
+                    <div style="display: flex; align-items: center; gap: 20px;">
+                        {% if f.logotipo %}
+                            <img src="{{ f.logotipo.url }}" alt="{{ f.instituicao }}" style="width: 80px; height: auto;">
+                        {% endif %}
+                        <div>
+                            <h2 style="margin: 0;">{{ f.nome }}</h2>
+                            <p style="margin: 5px 0;"><strong>Instituição:</strong> {{ f.instituicao }}</p>
+                            <p style="margin: 0;"><strong>Concluído em:</strong> {{ f.data_conclusao|date:"d/m/Y"|default:"Em curso" }}</p>
+                        </div>
+                    </div>
+                    
+                    {% if f.link_certificado %}
+                        <p><a href="{{ f.link_certificado }}" target="_blank">🔗 Ver Certificado Original</a></p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Ainda não foram adicionadas formações no Admin.</p>
+    {% endif %}
+{% endblock %}

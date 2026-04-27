@@ -1,0 +1,21 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+    <h1>Os Meus Projetos</h1>
+
+    <ul>
+        {% for projeto in projetos %}
+            <li>
+                <h2>{{ projeto.nome }}</h2>
+                <p>{{ projeto.descricao }}</p>
+                <p><strong>Ano:</strong> {{ projeto.ano_realizacao }}</p>
+                
+                {% if projeto.imagem %}
+                    <img src="{{ projeto.imagem.url }}" alt="{{ projeto.nome }}" width="300">
+                {% endif %}
+                
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+{% endblock %}

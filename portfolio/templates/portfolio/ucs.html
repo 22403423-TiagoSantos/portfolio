@@ -1,0 +1,41 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+    <h1>Unidades Curriculares</h1>
+
+    {% if ucs %}
+        <ul>
+            {% for uc in ucs %}
+                <li style="margin-bottom: 40px; list-style: none; border-left: 4px solid #4CAF50; padding-left: 15px;">
+                    <h2>{{ uc.nome }} ({{ uc.codigo }})</h2>
+                    <p><strong>Ano:</strong> {{ uc.ano }}º Ano | <strong>Semestre:</strong> {{ uc.semestre }}º Semestre | <strong>ECTS:</strong> {{ uc.ects }}</p>
+                    
+                    {% if uc.imagem %}
+                        <img src="{{ uc.imagem.url }}" alt="{{ uc.nome }}" style="max-width: 200px; display: block; margin-bottom: 10px;">
+                    {% endif %}
+
+                    {% if uc.objetivos %}
+                        <h3>Objetivos:</h3>
+                        <p>{{ uc.objetivos|linebreaks }}</p>
+                    {% endif %}
+
+                    {% if uc.conteudos %}
+                        <h3>Conteúdos:</h3>
+                        <p>{{ uc.conteudos|linebreaks }}</p>
+                    {% endif %}
+
+                    <p><strong>Professores:</strong> 
+                        {% for docente in uc.docentes.all %}
+                            {{ docente.nome }}{% if not forloop.last %}, {% endif %}
+                        {% empty %}
+                            Não especificado
+                        {% endfor %}
+                    </p>
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Ainda não existem Unidades Curriculares registadas.</p>
+    {% endif %}
+{% endblock %}

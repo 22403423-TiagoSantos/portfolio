@@ -1,0 +1,13 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+    <h1>Licenciaturas / Cursos</h1>
+    {% for curso in licenciaturas %}
+        <div>
+            <h2>{{ curso.nome }}</h2>
+            <p><strong>ECTS Totais:</strong> {{ curso.ects_totais }}</p>
+            <p>{{ curso.descricao }}</p>
+            <a href="{{ curso.link_plano_estudos }}" target="_blank">Ver Plano de Estudos Oficial</a>
+        </div>
+        <hr>
+    {% endfor %}
+{% endblock %}

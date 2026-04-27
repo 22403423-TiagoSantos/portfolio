@@ -1,0 +1,33 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+    <h1>Making Of - Diário de Bordo</h1>
+
+    {% if makingofs %}
+        <ul>
+            {% for registo in makingofs %}
+                <li style="margin-bottom: 50px; list-style: none;">
+                    <h2>{{ registo.nome }}</h2>
+                    
+                    <h3>Processo de Modelação e Decisões</h3>
+                    <p style="background-color: #f9f9f9; padding: 15px; border-left: 4px solid #2196F3;">
+                        {{ registo.descricao_processo|linebreaks }}
+                    </p>
+
+                    <h3>Erros e Resoluções</h3>
+                    <p style="background-color: #fff3e0; padding: 15px; border-left: 4px solid #ff9800;">
+                        {{ registo.erros_resolucoes|linebreaks }}
+                    </p>
+
+                    {% if registo.imagem %}
+                        <h3>Evidências Visuais (Caderno)</h3>
+                        <img src="{{ registo.imagem.url }}" alt="Esquema do Making Of" style="max-width: 100%; height: auto; border: 1px solid #ccc;">
+                    {% endif %}
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Ainda não existe informação de Making Of registada.</p>
+    {% endif %}
+{% endblock %}

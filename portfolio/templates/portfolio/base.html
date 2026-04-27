@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <title>O Meu Portfólio</title>
+</head>
+
+<body>
+    <nav>
+        <a href="{% url 'portfolio:index' %}">Início</a> |
+        <a href="{% url 'portfolio:projetos' %}">Projetos</a> |
+        <a href="{% url 'portfolio:tecnologias' %}">Tecnologias</a> |
+        <a href="{% url 'portfolio:tfcs' %}">TFCs</a> |
+        <a href="{% url 'portfolio:competencias' %}">Competências</a> |
+        <a href="{% url 'portfolio:ucs' %}">Unidades Curriculares</a> |
+        <a href="{% url 'portfolio:formacoes' %}">Formação</a> |
+        <a href="{% url 'portfolio:makingof' %}">Making Of</a> |
+        <a href="{% url 'portfolio:licenciaturas' %}">Licenciaturas</a> |
+        <a href="{% url 'portfolio:docentes' %}">Docentes</a> |
+    </nav>
+
+    <hr>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+
+</html>

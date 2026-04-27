@@ -1,0 +1,39 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+    <h1>Trabalhos Finais de Curso (DEISI)</h1>
+
+    {% if tfcs %}
+        <ul>
+            {% for tfc in tfcs %}
+                <li style="margin-bottom: 30px; list-style: none; border-left: 4px solid #ccc; padding-left: 15px;">
+                    <h2>{{ tfc.nome }}</h2>
+                    <p><strong>Ano:</strong> {{ tfc.ano }} | <strong>Nível interesse:</strong> {{ tfc.classificacao }} estrelas</p>
+                    <p><strong>Autor:</strong> {{ tfc.autor }}</p>
+                    <p><strong>Orientador:</strong> {{ tfc.orientador }}</p>
+                    <p><strong>Curso:</strong> {{ tfc.licenciatura.nome }}</p>
+                    
+                    <p><strong>Resumo:</strong><br>
+                    {{ tfc.sumario }}</p>
+
+                    {% if tfc.palavras_chave %}
+                        <p><em>Tags: {{ tfc.palavras_chave }}</em></p>
+                    {% endif %}
+
+                    <div>
+                        {% if tfc.link_pdf %}
+                            <a href="{{ tfc.link_pdf }}" target="_blank">📄 Ver PDF</a>
+                        {% endif %}
+                        
+                        {% if tfc.link_imagem %}
+                            | <a href="{{ tfc.link_imagem }}" target="_blank">🖼️ Ver Poster/Imagem</a>
+                        {% endif %}
+                    </div>
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Ainda não existem TFCs registados na base de dados.</p>
+    {% endif %}
+{% endblock %}

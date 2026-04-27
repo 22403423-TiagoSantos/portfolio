@@ -1,0 +1,19 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+    <h1>As Minhas Tecnologias</h1>
+    <ul>
+        {% for tech in tecnologias %}
+            <li>
+                <h2>{{ tech.nome }}</h2>
+                <p>{{ tech.descricao }}</p>
+                <p>Nível de Interesse: {{ tech.nivel_interesse }}/5</p>
+                {% if tech.logo %}
+                    <img src="{{ tech.logo.url }}" alt="{{ tech.nome }}" width="100">
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>Ainda não registaste tecnologias no Admin.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
