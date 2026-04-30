@@ -1,12 +1,17 @@
 {% extends 'base.html' %} {% block main %}
 <h3>Login</h3>
 {% if mensagem %}
-    <p style="color: red;">{{ mensagem }}</p>
+<p style="color: red;">{{ mensagem }}</p>
 {% endif %}
 <form action="" method="post">
     {% csrf_token %}
     <p>Username: <input type="text" name="username"></p>
     <p>Password: <input type="password" name="password"></p>
+    <hr>
+    <p>Ou, se preferir, entre sem password:</p>
+    <a href="{% url 'accounts:solicitar_link' %}" class="btn-link-magico">
+        Receber Link Mágico por Email
+    </a>
     <input type="submit" value="Login">
 </form>
 {% endblock %}
