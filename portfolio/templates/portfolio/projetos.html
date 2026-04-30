@@ -3,10 +3,11 @@
 {% block content %}
     <h1>Os Meus Projetos</h1>
     
+    {% if request.user.is_authenticated %}
     <a href="{% url 'portfolio:novo_projeto' %}" style="display: inline-block; margin-bottom: 20px; padding: 10px; background: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">
         + Inserir Novo Projeto
     </a>
-
+    {% endif %}
     <ul>
         {% for projeto in projetos %}
             <li style="margin-bottom: 30px;">
@@ -16,10 +17,12 @@
                     <img src="{{ projeto.imagem.url }}" width="300">
                 {% endif %}
                 
+                {% if request.user.is_authenticated %}
                 <br>
                 <a href="{% url 'portfolio:edita_projeto' projeto.id %}" style="padding: 5px 10px; background: #2196F3; color: white; text-decoration: none; border-radius: 3px;">✏️ Editar</a>
                 
                 <a href="{% url 'portfolio:apaga_projeto' projeto.id %}" style="padding: 5px 10px; background: #f44336; color: white; text-decoration: none; border-radius: 3px; margin-left: 10px;" onclick="return confirm('Tens a certeza que queres apagar este projeto?')">🗑️ Apagar</a>
+                {% endif %}
             </li>
             <hr>
         {% endfor %}

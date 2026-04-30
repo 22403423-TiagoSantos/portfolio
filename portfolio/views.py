@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Projeto, Tecnologia, Competencia, TFC, UnidadeCurricular, Formacao, MakingOf, Licenciatura, Docente, Perfil, TipoTecnologia
 from .forms import ProjetoForm, TecnologiaForm, CompetenciaForm, FormacaoForm
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     perfil = Perfil.objects.first() 
@@ -50,6 +51,7 @@ def docentes_view(request):
     docentes = Docente.objects.all()
     return render(request, 'portfolio/docentes.html', {'docentes': docentes})
 
+@login_required
 def novo_projeto_view(request):
     form = ProjetoForm(request.POST or None, request.FILES or None)
     if form.is_valid():
@@ -59,6 +61,7 @@ def novo_projeto_view(request):
     context = {'form': form}
     return render(request, 'portfolio/novo_projeto.html', context)
 
+@login_required
 def edita_projeto_view(request, projeto_id):
     projeto = Projeto.objects.get(id=projeto_id)
     form = ProjetoForm(request.POST or None, request.FILES or None, instance=projeto)
@@ -70,11 +73,13 @@ def edita_projeto_view(request, projeto_id):
     context = {'form': form, 'projeto': projeto}
     return render(request, 'portfolio/edita_projeto.html', context)
 
+@login_required
 def apaga_projeto_view(request, projeto_id):
     projeto = Projeto.objects.get(id=projeto_id)
     projeto.delete()
     return redirect('portfolio:projetos')
 
+@login_required
 def nova_tecnologia_view(request):
     form = TecnologiaForm(request.POST or None, request.FILES or None)
     if form.is_valid():
@@ -84,6 +89,7 @@ def nova_tecnologia_view(request):
     context = {'form': form}
     return render(request, 'portfolio/nova_tecnologia.html', context)
 
+@login_required
 def edita_tecnologia_view(request, tecnologia_id):
     tecnologia = Tecnologia.objects.get(id=tecnologia_id)
     form = TecnologiaForm(request.POST or None, request.FILES or None, instance=tecnologia)
@@ -95,11 +101,13 @@ def edita_tecnologia_view(request, tecnologia_id):
     context = {'form': form, 'tecnologia': tecnologia}
     return render(request, 'portfolio/edita_tecnologia.html', context)
 
+@login_required
 def apaga_tecnologia_view(request, tecnologia_id):
     tecnologia = Tecnologia.objects.get(id=tecnologia_id)
     tecnologia.delete()
     return redirect('portfolio:tecnologias')
 
+@login_required
 def nova_competencia_view(request):
     form = CompetenciaForm(request.POST or None)
     if form.is_valid():
@@ -109,6 +117,7 @@ def nova_competencia_view(request):
     context = {'form': form}
     return render(request, 'portfolio/nova_competencia.html', context)
 
+@login_required
 def edita_competencia_view(request, competencia_id):
     competencia = Competencia.objects.get(id=competencia_id)
     form = CompetenciaForm(request.POST or None, instance=competencia)
@@ -120,11 +129,13 @@ def edita_competencia_view(request, competencia_id):
     context = {'form': form, 'competencia': competencia}
     return render(request, 'portfolio/edita_competencia.html', context)
 
+@login_required
 def apaga_competencia_view(request, competencia_id):
     competencia = Competencia.objects.get(id=competencia_id)
     competencia.delete()
     return redirect('portfolio:competencias')
 
+@login_required
 def nova_formacao_view(request):
     form = FormacaoForm(request.POST or None, request.FILES or None)
     if form.is_valid():
@@ -134,6 +145,7 @@ def nova_formacao_view(request):
     context = {'form': form}
     return render(request, 'portfolio/nova_formacao.html', context)
 
+@login_required
 def edita_formacao_view(request, formacao_id):
     formacao = Formacao.objects.get(id=formacao_id)
     form = FormacaoForm(request.POST or None, request.FILES or None, instance=formacao)
@@ -145,6 +157,7 @@ def edita_formacao_view(request, formacao_id):
     context = {'form': form, 'formacao': formacao}
     return render(request, 'portfolio/edita_formacao.html', context)
 
+@login_required
 def apaga_formacao_view(request, formacao_id):
     formacao = Formacao.objects.get(id=formacao_id)
     formacao.delete()
