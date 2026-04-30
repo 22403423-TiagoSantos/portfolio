@@ -1,0 +1,13 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+<div style="padding: 20px; max-width: 500px; margin: auto;">
+    <h2>Registo de Novo Autor</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Criar Conta e Ser Autor</button>
+    </form>
+    <p>Já tens conta? <a href="{% url 'accounts:login' %}">Faz login aqui</a>.</p>
+</div>
+{% endblock %}

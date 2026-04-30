@@ -1,0 +1,24 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+<div style="padding: 20px;">
+    <h2>Publicações e Artigos</h2>
+    
+    {% if request.user.is_authenticated %}
+        <p><a href="{% url 'artigos:novo' %}" style="color: green; font-weight: bold;">+ Publicar Novo Artigo</a></p>
+    {% endif %}
+
+    <hr>
+
+    {% for artigo in artigos %}
+        <div style="border-bottom: 1px solid #ddd; padding: 10px 0;">
+            <h3><a href="{% url 'artigos:detalhe' artigo.id %}">{{ artigo.titulo }}</a></h3>
+            <p>Por: <strong>{{ artigo.autor.username }}</strong> em {{ artigo.data_criacao|date:"d/m/Y" }}</p>
+            <p>{{ artigo.texto|truncatewords:30 }}</p>
+            <p> {{ artigo.likes.count }} gostos |  {{ artigo.comentarios.count }} comentários</p>
+        </div>
+    {% empty %}
+        <p>Ainda não existem artigos publicados.</p>
+    {% endfor %}
+</div>
+{% endblock %}

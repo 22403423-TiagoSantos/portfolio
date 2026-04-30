@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "escola",
     "accounts",
     "markdownify.apps.MarkdownifyConfig",
+    "artigos",
 ]
 
 MIDDLEWARE = [
@@ -128,7 +129,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # URL pública para aceder aos ficheiros
 MEDIA_URL = '/media/'
 
-LOGIN_URL = 'login'
+LOGIN_URL = 'accounts:login'
 
 MARKDOWNIFY = {
    "default": {
@@ -153,3 +154,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "portfolio" / "static",
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
