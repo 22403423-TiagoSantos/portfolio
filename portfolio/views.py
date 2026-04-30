@@ -152,5 +152,20 @@ def apaga_formacao_view(request, formacao_id):
 
 def sobre_view(request):
     tipos = TipoTecnologia.objects.all()
-    context = {'tipos': tipos}
+    
+    texto_making_of = """
+### O Desafio
+O objetivo deste projeto da cadeira de Programação Web é construir um **Portfólio Dinâmico** utilizando a framework *Django*.
+
+Ao longo do desenvolvimento, aprendemos a:
+* Implementar a arquitetura MVT (Model-View-Template).
+* Criar operações CRUD completas.
+* Gerir bases de dados relacionais e ficheiros estáticos/media.
+    """
+    
+    context = {
+    'tipos': tipos,
+    'texto_exemplo_makingof': texto_making_of
+}
+    
     return render(request, 'portfolio/sobre.html', context)
