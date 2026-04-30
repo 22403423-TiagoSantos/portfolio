@@ -1,0 +1,70 @@
+{% extends 'portfolio/base.html' %}
+{% load markdownify %}
+{% load static %}
+
+{% block content %}
+<h1>Sobre esta Aplicação</h1>
+
+<section style="margin-bottom: 40px;">
+    <h2>1. Arquitetura MVT do Django</h2>
+    <p>O Django utiliza o padrão MVT (Model-View-Template) para separar as responsabilidades da aplicação.</p>
+    
+    <img src="{% static 'portfolio/images/mvt.jpeg' %}" alt="Desenho Arquitetura MVT" style="max-width: 100%; border: 1px solid #ddd;">
+
+    <p><strong>Fluxo de Informação:</strong> O utilizador faz um pedido via Browser, o <strong>URL</strong> encaminha para a <strong>View</strong>, que interage com o <strong>Model</strong> (Base de Dados) e renderiza o <strong>Template</strong> final de volta ao utilizador.</p>
+    
+    <p><strong>Vídeo Tutorial:</strong></p>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/O_TEU_ID_DO_VIDEO" frameborder="0" allowfullscreen></iframe>
+</section>
+
+<section style="margin-bottom: 40px;">
+    <h2>2. Modelação</h2>
+    <p>Abaixo encontra-se o Diagrama Entidade-Relação e a estrutura definida no <code>models.py</code>.</p>
+    
+    <img src="{% static 'portfolio/images/diagrama_er.jpeg' %}" alt="Diagrama Entidade Relação" style="max-width: 100%; border: 1px solid #ddd;">
+</section>
+
+<section style="margin-bottom: 40px;">
+    <h2>3. Tecnologias Utilizadas</h2>
+    <p>Tecnologias estruturadas por tipo (Frontend, Backend, Base de Dados, etc.):</p>
+    
+    {% for tipo in tipos %}
+        <div style="margin-top: 20px;">
+            <h3>{{ tipo.nome }}</h3>
+            <ul>
+                {% for tech in tipo.tecnologias.all %}
+                    <li>
+                        <strong>{{ tech.nome }}:</strong> {{ tech.descricao }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% empty %}
+        <p>Ainda não foram registadas tecnologias com tipos associados.</p>
+    {% endfor %}
+</section>
+
+<section style="margin-bottom: 40px;">
+    <h2>4. Estrutura das Páginas</h2>
+    <p>O mapa de navegação abaixo descreve a hierarquia e as ligações entre as diferentes páginas do portfólio.</p>
+    
+    <img src="{% static 'portfolio/images/mapa_navegacao.jpeg' %}" alt="Mapa de Navegação do Site" style="max-width: 100%; border: 1px solid #ddd;">
+</section>
+
+<section style="margin-bottom: 40px;">
+    <h2>5. Repositório GitHub</h2>
+    <p>Link para o código fonte: <a href="https://github.com/22403423-TiagoSantos/portfolio" target="_blank">Repositório GitHub</a></p>
+    <p><strong>Vantagens do Git/GitHub:</strong> Permite manter um histórico detalhado de todas as alterações (commits), facilita a colaboração e garante a segurança do código através de cópias remotas.</p>
+</section>
+
+<section style="margin-bottom: 40px;">
+    <h2>6. Making-Of</h2>
+    <p>Apresentação do desafio e evolução do projeto:</p>
+    <div style="background: #f9f9f9; padding: 15px; border-radius: 5px; border-left: 5px solid #333;">
+        {{ texto_exemplo_makingof | markdownify }}
+    </div>
+    <br>
+    <a href="{% url 'portfolio:makingof' %}" style="text-decoration: underline; font-weight: bold;">Ver todos os detalhes no Diário de Bordo</a>
+</section>
+
+{% endblock %}

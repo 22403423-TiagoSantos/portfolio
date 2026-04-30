@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Projeto, Tecnologia, Competencia, TFC, UnidadeCurricular, Formacao, MakingOf, Licenciatura, Docente, Perfil
+from .models import Projeto, Tecnologia, Competencia, TFC, UnidadeCurricular, Formacao, MakingOf, Licenciatura, Docente, Perfil, TipoTecnologia
 from .forms import ProjetoForm, TecnologiaForm, CompetenciaForm, FormacaoForm
 
 def index(request):
@@ -149,3 +149,8 @@ def apaga_formacao_view(request, formacao_id):
     formacao = Formacao.objects.get(id=formacao_id)
     formacao.delete()
     return redirect('portfolio:formacoes')
+
+def sobre_view(request):
+    tipos = TipoTecnologia.objects.all()
+    context = {'tipos': tipos}
+    return render(request, 'portfolio/sobre.html', context)

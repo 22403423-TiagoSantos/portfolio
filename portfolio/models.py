@@ -49,12 +49,19 @@ class UnidadeCurricular(models.Model):
     def __str__(self):
         return self.nome
     
+class TipoTecnologia(models.Model):
+    nome = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.nome
+    
 class Tecnologia(models.Model):
     nome = models.CharField(max_length=100)
     logo = models.ImageField(upload_to='tecnologias/', blank=True, null=True)
     link_tecnologia = models.URLField(blank=True, null=True)
     descricao = models.TextField()
     nivel_interesse = models.IntegerField()
+    tipo = models.ForeignKey(TipoTecnologia, on_delete=models.CASCADE, related_name='tecnologias', null=True, blank=True)
 
     def __str__(self):
         return self.nome

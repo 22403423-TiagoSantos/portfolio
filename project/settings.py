@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "portfolio",
     "escola",
+    "accounts",
+    "markdownify.apps.MarkdownifyConfig",
 ]
 
 MIDDLEWARE = [
@@ -125,3 +127,29 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # URL pública para aceder aos ficheiros
 MEDIA_URL = '/media/'
+
+LOGIN_URL = 'login'
+
+MARKDOWNIFY = {
+   "default": {
+      "WHITELIST_TAGS": [
+        'a', 'abbr', 'acronym', 
+        'strong', 'b',
+        'blockquote', 'em', 'i',
+        'ul', 'li', 'ol',
+        'p',
+        'h1', 'h2', 'h3', 'h4',
+      ]
+   },
+
+   "alternative": {
+      "WHITELIST_TAGS": ["a", "p"],
+      "MARKDOWN_EXTENSIONS": ["markdown.extensions.fenced_code", ]
+   }
+}
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "portfolio" / "static",
+]
