@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     "accounts",
     "markdownify.apps.MarkdownifyConfig",
     "artigos",
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +54,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware", 
 ]
 
 ROOT_URLCONF = "project.urls"
@@ -123,12 +127,6 @@ STATIC_URL = "static/"
 
 import os
 
-# Pasta no servidor onde os ficheiros vão ser guardados
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# URL pública para aceder aos ficheiros
-MEDIA_URL = '/media/'
-
 LOGIN_URL = 'accounts:login'
 
 MARKDOWNIFY = {
@@ -156,3 +154,58 @@ STATICFILES_DIRS = [
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+## em settings.py
+
+import environ
+
+# inicializar environ
+env = environ.Env()
+
+# ler ficheiro .env (opcional mas recomendado)
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
+
+## definicao da base de dados psql em Neon
+DATABASES = {
+    "default": env.db("DATABASE_URL")
+}
+
+## project/settings.py
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')   
+
+
+
+# já foi feita a importação para as var. de ambiente da BD
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': env('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': env('CLOUDINARY_API_KEY'),
+    'API_SECRET': env('CLOUDINARY_API_SECRET'),
+}
+
+# settings.py
+
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
